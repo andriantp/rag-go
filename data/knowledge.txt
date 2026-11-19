@@ -1,0 +1,60 @@
+RAG (Retrieval-Augmented Generation)
+RAG combines information retrieval with a large language model.
+The retrieval system searches external documents for relevant information.
+Retrieved information is provided to the LLM as context.
+This helps the LLM generate answers grounded in external information.
+
+Embedding
+An embedding represents text as a numerical vector.
+Embeddings encode semantic information about text.
+They can be used to compare the meaning of different text inputs.
+
+Retrieval
+Retrieval is the process of finding relevant information from a collection of documents.
+A retrieval system compares a query with available documents or their representations.
+The most relevant results are returned to provide useful context for downstream tasks.
+
+Generation
+Generation is the process in which a language model produces an answer based on its input.
+In a RAG system, the model receives both the user's question and retrieved context.
+The model uses this information to formulate a response.
+
+Vector Search
+Vector search finds items by comparing their numerical vector representations.
+It commonly uses distance or similarity metrics to rank candidate results.
+Unlike exact keyword matching, vector search can identify semantically similar content.
+
+Cosine Similarity
+Cosine similarity measures the similarity between two vectors based on the angle between them.
+Its value ranges from -1 to 1.
+Higher values generally indicate greater directional similarity between vectors.
+
+Chunking
+Chunking divides a document into smaller sections that can be retrieved independently.
+Each chunk should contain enough information to preserve its meaning.
+Chunk size and boundaries can affect retrieval quality and the context provided to an LLM.
+
+Top-K Retrieval
+Top-K retrieval returns a fixed maximum number of results ranked by relevance.
+For example, topK=3 allows the retrieval system to return up to three chunks.
+A larger K can improve coverage but may introduce irrelevant information.
+
+Similarity Threshold
+A similarity threshold defines the minimum similarity score required for a result to be accepted.
+Results below the threshold are excluded from the retrieved context.
+A threshold that is too high may reject useful information, while a threshold that is too low may admit irrelevant results.
+
+Hallucination
+A hallucination occurs when a language model generates information that is false, unsupported, or inconsistent with available evidence.
+Providing relevant context can reduce hallucinations but does not eliminate them.
+RAG systems should evaluate whether generated answers are supported by retrieved sources.
+
+Keyword Search
+Keyword search retrieves documents by matching terms in a query with terms in the documents.
+It can work well when the query and document use the same vocabulary.
+It may miss relevant documents when users express the same idea using different words.
+
+pgvector
+pgvector is a PostgreSQL extension for storing and searching vector representations.
+It supports similarity search using vector distance operators.
+It allows applications to keep document data and embeddings in PostgreSQL and perform vector search through SQL.
